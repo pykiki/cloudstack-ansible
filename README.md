@@ -30,7 +30,7 @@ By default this will install CloudStack, MySQL & NFS services on the same host a
 
 ### Software
 
-These plays are (currently) written for CentOS 6.5 and are tested against Ansible v1.8.4
+These plays are (currently) written for CentOS 7 and are tested against Ansible v2.6.1 and Cloudstack 4.11
 
 In latest versions of Ansible, sshpass & "host_key_checking = False" are required to enable the use of a password
 to login to a host rather than using SSH keys.
@@ -38,7 +38,7 @@ to login to a host rather than using SSH keys.
 To install Ansible, sshpass and disable the host key checking; run:
  
 ```
-# rpm -ivh http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+# yum install -y epel-release
 # yum install -y ansible sshpass
 # sed  -i "/^#host_key_checking/ c\host_key_checking = False" /etc/ansible/ansible.cfg
 ```
@@ -51,6 +51,18 @@ To install CloudStack, ```cd``` to where you have placed the plays and run:
 ansible-playbook deploy-cloudstack.yml -i hosts -k
 ```
 You will be prompted for the root password of the target host.
+
+## Cleaning if errors occur
+
+To cleanup CloudStack after a failed attempt, ```cd``` to where you have placed the plays and run:
+
+```
+ansible-playbook clean-cloudstack.yml -i hosts -k
+```
+You will be prompted for the root password of the target host.
+
+Note, it is highly recommended to run the clean after every failed attempt, unless you know what you are doing.
+Not doing the clean after an error, could prevent Cloudstack to install properly.
 
 ## Changing Default Behaviour
 

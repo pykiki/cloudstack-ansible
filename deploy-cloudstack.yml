@@ -10,11 +10,11 @@
   tasks: 
     - include: ./roles/cloudstack-manager/tasks/seedstorage.yml
   vars: 
-    - mysql_root_password: rch97y
-    - mysql_cloud_password: rch97y
+    - mysql_root_password: Cl0ud5tack
+    - mysql_cloud_password: Cl0ud5tack
     - baseurl_cloudstack: "http://cloudstack.apt-get.eu/centos/7/4.11/"
-    - old_mysql_root_password: "rch97y"
+    - old_mysql_root_password: ""
     - systemvm_templates: 
       - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11/systemvmtemplate-4.11.1-kvm.qcow2.bz2', hypervisor: 'kvm' }
-#      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11/systemvmtemplate-4.11.1-vmware.ova', hypervisor: 'vmware' }
-#      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11//systemvmtemplate-4.11.1-xen.vhd.bz2', hypervisor: 'xenserver' }
+      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11/systemvmtemplate-4.11.1-vmware.ova', hypervisor: 'vmware' }
+      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11//systemvmtemplate-4.11.1-xen.vhd.bz2', hypervisor: 'xenserver' }
