@@ -24,7 +24,7 @@
   service: name=mysqld state=started enabled=yes
   
 - name: update mysql root password
-  mysql_user: user="root" password="{{ mysql_root_password }}" host="localhost" login_user="root" login_password=""
+  mysql_user: user="root" password="{{ mysql_root_password }}" host="localhost" login_user="root" login_password="{{ old_mysql_root_password }}"
   
 - name: Ensure Firewall Rules are in place for MySQL
   lineinfile: dest=/etc/sysconfig/iptables insertafter=":OUTPUT" line="-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT"
