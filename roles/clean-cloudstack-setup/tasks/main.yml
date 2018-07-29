@@ -1,0 +1,27 @@
+# Copyright (C) ShapeBlue Ltd - All Rights Reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary and confidential
+# Released by ShapeBlue <info@shapeblue.com>, April 2014
+
+---
+
+- name: Remove all packages
+  yum: name={{ item }} state=absent
+  with_items:
+    - cloudstack-agent
+    - cloudstack-usage
+    - cloudstack-management
+    - cloudstack-common
+    - openvswitch
+    - openvswitch-controller
+    - MySQL-python
+    - mysql-community-server
+    - nfs-utils
+
+- name: Clean directories and files
+  file: name={{ item }} state=absent
+  with_items:
+    - /usr/lib64/python2.7/site-packages/cloudutils
+    - /exports
+    - /var/lib/mysql
+    - /etc/my.cnf

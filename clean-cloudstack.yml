@@ -1,0 +1,4 @@
+---
+- hosts: acs-manager
+  roles: 
+      - clean-cloudstack-setup

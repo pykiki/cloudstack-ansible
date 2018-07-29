@@ -22,8 +22,17 @@
 - name: Ensure selinux is set permanently
   selinux: policy=targeted state=permissive
 
-- name: Ensure CloudStack packages are installed
+- name: Ensure CloudStack Management packages are installed
   yum: name=cloudstack-management state=present
+
+- name: Ensure Python PIP is installed
+  yum: name=python-pip state=present
+
+- name: Ensure ifcfg pip app is installed
+  pip: name=ifcfg state=present
+
+- name: Overrite the original networkConfig.py due to ifconfig format bug
+  template: src=networkConfig.py.j2 dest=/usr/lib64/python2.7/site-packages/cloudutils/networkConfig.py
 
 - name: Ensure vhd-util is present
   get_url: url="http://download.cloud.com.s3.amazonaws.com/tools/vhd-util" dest="/usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/vhd-util" mode=0755

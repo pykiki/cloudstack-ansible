@@ -5,14 +5,16 @@
     - nfs-server
     - cloudstack-manager
     - cloudmonkey
+    - cloudstack-agent
+    - openvswitch
   tasks: 
     - include: ./roles/cloudstack-manager/tasks/seedstorage.yml
   vars: 
-    - mysql_root_password: blah123
-    - mysql_cloud_password: blah123
-    - baseurl_cloudstack: "http://packages.shapeblue.com/cloudstack/upstream/centos/4.11"
-    - old_mysql_root_password: ""
+    - mysql_root_password: rch97y
+    - mysql_cloud_password: rch97y
+    - baseurl_cloudstack: "http://cloudstack.apt-get.eu/centos/7/4.11/"
+    - old_mysql_root_password: "rch97y"
     - systemvm_templates: 
-      - { url: 'http://packages.shapeblue.com/systemvmtemplate/4.11/systemvmtemplate-4.11.1-kvm.qcow2.bz2', hypervisor: 'kvm' }
-      - { url: 'http://packages.shapeblue.com/systemvmtemplate/4.11/systemvmtemplate-4.11.1-vmware.ova', hypervisor: 'vmware' }
-      - { url: 'http://packages.shapeblue.com/systemvmtemplate/4.11/systemvmtemplate-4.11.1-xen.vhd.bz2', hypervisor: 'xenserver' }
+      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11/systemvmtemplate-4.11.1-kvm.qcow2.bz2', hypervisor: 'kvm' }
+#      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11/systemvmtemplate-4.11.1-vmware.ova', hypervisor: 'vmware' }
+#      - { url: 'http://cloudstack.apt-get.eu/systemvm/4.11//systemvmtemplate-4.11.1-xen.vhd.bz2', hypervisor: 'xenserver' }
