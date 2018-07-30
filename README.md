@@ -71,7 +71,13 @@ the hosts file. Change 127.0.0.1 to the IP address or resolveable FQDN of the ho
 
 All variables are held in deploy-cloudstack.yml. To change the installed version and/or systemvm template sources edit deploy-cloudstack.yml
 
+## After running the play
 
+After you run the play, you will be able to use the IP your cloudstack host and port 8080 in your browser.  (http://<cloudserver-ip>:8080)
+Login with `admin` for user and `password` for password.  Follow the prompts.  Note, it will take awhile to add your host
+when you are launching.  This is expected.  
+
+After you are complete, you should have a fully working Cloudstack 1 host install!
 
 ## TODOs
 
