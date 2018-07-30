@@ -5,6 +5,8 @@
 
 ---
 
+
+
 - name: Remove all packages
   yum: name={{ item }} state=absent
   with_items:
@@ -17,11 +19,19 @@
     - MySQL-python
     - mysql-community-server
     - nfs-utils
+    - qemu-kvm
+    - qemu-common
+    - libvirt-daemon
+    - libvirt-libs
+    - libvirt-client
+    - libvirt-python
+    - libvirt-daemon-driver-qemu
+    - libvirt-daemon-config-network
 
 - name: Clean directories and files
   file: name={{ item }} state=absent
   with_items:
     - /usr/lib64/python2.7/site-packages/cloudutils
-    - /exports
+    - /exports/*
     - /var/lib/mysql
     - /etc/my.cnf

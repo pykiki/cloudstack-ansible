@@ -12,7 +12,13 @@
   yum: name=openvswitch-controller state=present
 
 - name: Replace default libvirtd configs with updated ones
+  template: src=qemu.conf.j2 dest=/etc/libvirt/qemu.conf
+
+- name: Replace default libvirtd configs with updated ones
   template: src=libvirtd.conf.j2 dest=/etc/libvirt/libvirtd.conf
+
+- name: Replace default libvirtd configs with updated ones
+  template: src=libvirtd.j2 dest=/etc/sysconfig/libvirtd
 
 - name: Restart the libvirtd service
   service: name=libvirtd state=restarted
