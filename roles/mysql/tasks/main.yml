@@ -14,8 +14,10 @@
 - name: Remove iptables if present
   yum: name=iptables state=absent
 
-- name: Ensure the Apache Cloudstack Repo file is configured
-  template: src=mysql.repo.j2 dest=/etc/yum.repos.d/cloudstack.repo
+- name: Install http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+  yum:
+    name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    state: present
 
 - name: Ensure mysql python are installed (Ansible requirement)
   yum: name=MySQL-python state=present
@@ -33,4 +35,9 @@
   service: name=mysqld state=started enabled=yes
   
 - name: update mysql root password
-  mysql_user: user="root" password="{{ mysql_root_password }}" host="localhost" login_user="root" login_password="{{ old_mysql_root_password }}"
+  mysql_user: user="root" password="{{ mysql_root_password }}" host="{{item}}" login_user="root" login_password="{{ old_mysql_root_password }}"
+  with_items:
+    - '::1'
+    - '127.0.0.1'
+    - 'localhost'
+  ignore_errors: yes
