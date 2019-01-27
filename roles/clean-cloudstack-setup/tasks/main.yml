@@ -32,6 +32,6 @@
   file: name={{ item }} state=absent
   with_items:
     - /usr/lib64/python2.7/site-packages/cloudutils
-    - /exports/*
+    - /export/*
     - /var/lib/mysql
     - /etc/my.cnf

@@ -6,6 +6,6 @@
 ---
 
 - name: Install System VM templates
-  command: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /exports/secondary -u "{{ item.url }}" -h "{{ item.hypervisor }}" -F
+  command: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m /export/secondary -u "{{ item.url }}" -h "{{ item.hypervisor }}" -F
   with_items:
     - "{{ systemvm_templates }}"

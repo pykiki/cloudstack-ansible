@@ -15,8 +15,8 @@
 - name: Create export directory
   file: path={{ item }} state=directory mode=777 owner=root group=root
   with_items:
-    - "/exports/secondary" 
-    - "/exports/primary"
+    - "/export/secondary"
+    - "/export/primary"
 
 - name: Configure Exports
   template: src=exports.j2 dest=/etc/exports
